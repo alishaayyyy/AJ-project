@@ -1,0 +1,453 @@
+body{
+  font-family: cursive !important;
+  background-color: black !important;
+}
+
+
+/* logo on the left */
+
+.navbar-collapse {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* navbar items in the center */
+.navbar-nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Logo size */
+.logo {
+  max-height: 50px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  color: #ff6347; 
+  transform: scale(1.3); 
+  text-shadow: 0px 0px 10px rgba(255, 99, 71, 0.8);
+  cursor: pointer; 
+}
+
+/* Navbar links color */
+.navbar-nav .nav-link {
+  color: white !important;
+}
+
+.navbar-nav .nav-link:hover {
+ color: #FF7400 !important;
+}
+
+
+
+
+
+/* Center align the text */
+.navbar-nav {
+  font-size: 1.2em;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Align search bar to the right */
+.d-flex {
+  justify-content: flex-end;
+}
+
+/* Dropdown and other navbar items white */
+.navbar-nav .nav-item.dropdown .nav-link {
+  color: white !important;
+}
+
+
+
+/* Navbar brand text color */
+.navbar-brand {
+  color: white !important;
+}
+
+
+
+/* icon of navbar */
+
+.icon {
+  font-size: 20px;
+  color: #fff; /* White color for icons */
+  margin-right: 20px;
+  transition: all 0.3s ease; /* Smooth transition for all effects */
+}
+
+/* Hover effects */
+.icon:hover {
+  color: #ff6347; 
+  transform: scale(1.3); 
+  text-shadow: 0px 0px 10px rgba(255, 99, 71, 0.8);
+  cursor: pointer; 
+}
+
+
+a:hover .icon {
+  color: #ff6347; 
+  transform: scale(1.3); 
+  text-shadow: 0px 0px 10px rgba(255, 99, 71, 0.8); 
+}
+
+
+
+/* dropdown hover effect by blocking  */
+@media only screen and (min-width:750px) {
+  .dropdown:hover .dropdown-menu{
+    display: block;
+  }
+
+
+
+}
+
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  background-color: black; 
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); 
+  opacity: 0; 
+  visibility: hidden; 
+  transform: translateY(-10px); 
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; 
+}
+
+/* Show dropdown on hover */
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible; 
+  transform: translateY(0); 
+}
+
+/* Styling for dropdown items */
+.dropdown-item {
+  color: white !important; /* White color for dropdown items */
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+  background-color: #FF7400; 
+  color: black !important;
+  border-radius: 5px; 
+}
+
+/* Divider styling */
+.dropdown-divider {
+  background-color: #FF7400; /* Orange color for the divider */
+}
+
+
+.btn1:hover{
+background-color: white !important;
+}
+
+
+
+
+
+/* Container for the image and overlay */
+.image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* The image styling */
+.img-fluid {
+  width: 100%; /* Ensure the image takes the full width */
+  height: auto;
+  object-fit: contain; /* Maintain aspect ratio */
+}
+
+/* The overlay on top of the image */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 116, 0, 0.6); /* Light orange color with opacity */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Initially hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for visibility */
+}
+
+/* Display overlay when the container is hovered */
+.image-container:hover .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Styling for the heading */
+.main-heading {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Styling for the paragraphs */
+.para {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+@media only screen and (max-width:450px) {
+
+  /* Styling for the heading */
+.main-heading {
+  font-size: 26px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Styling for the paragraphs */
+.para {
+  font-size: 15px !important;
+  margin-bottom: 15px;
+}
+
+}
+
+/* view more */
+.view {
+  font-size: 20px;
+  color: #fff; /* White color for icons */
+  margin-right: 2px;
+  transition: all 0.3s ease; /* Smooth transition for all effects */
+}
+
+/* Hover effects */
+.view:hover {
+  color: #ff6347; 
+  transform: scale(1.1); 
+  text-shadow: 0px 0px 10px rgba(255, 99, 71, 0.8);
+  cursor: pointer; 
+}
+
+/* ciircles images */
+
+.col img {
+  border-radius: 50%;  
+  width: 10em;  
+  transition: transform 0.3s ease; 
+}
+
+/* Hover effect for image */
+.col:hover img {
+  transform: scale(1.1);  
+}
+
+/* Hover effect for the text */
+.col:hover div {
+  color: #FF7400;  
+  font-weight: bold; 
+  transition: color 0.3s ease, font-weight 0.3s ease; 
+}
+.col:hover {
+  background-color: rgba(0, 0, 0, 0.1);  
+  border-radius: 50px;  
+}
+
+
+/* main heading */
+
+
+.main-heading {
+  font-size: 30px;
+  color: #fff; /* White color for icons */
+  margin-right: 2px;
+  transition: all 0.3s ease; /* Smooth transition for all effects */
+}
+
+/* Hover effects */
+.main-heading:hover {
+  color: #ff6347; 
+  transform: scale(1.1); 
+  text-shadow: 0px 0px 10px rgba(255, 99, 71, 0.8);
+  cursor: pointer; 
+}
+
+
+
+
+/* cards and wishlist */
+
+body {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; 
+}
+
+.recipe-card {
+  background-color: #333333;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.recipe-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.recipe-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-content {
+  padding: 20px;
+}
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recipe-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #FF7400;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  color: #FF7400;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.2);
+}
+
+.favorite-btn .fas {
+  color: #FF7400;
+}
+
+.favorite-btn .far {
+  color: #ffffff;
+}
+
+.recipe-description {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #dddddd;
+}
+
+.read-more-btn {
+  margin-top: 20px;
+  background-color: #FF7400;
+  border: none;
+  padding: 10px 15px;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.read-more-btn:hover {
+  background-color: #e67e22;
+  transform: translateY(-2px);
+}
+
+.wishlist {
+  margin-top: 40px;
+}
+
+#wishlist-items {
+  list-style: none;
+  padding: 0;
+}
+
+#wishlist-items li {
+  background: #333333;
+  color: #ffffff;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+.text-warning{
+    color: #FF7400 !important;
+    font-weight: bold;
+}
+
+
+/* option to search hover effect */
+
+.container .row1 div {
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.container .row1 div:hover {
+  background-color: #FF7400; 
+  color: #000000; 
+  transform: translateY(-10px); 
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); 
+}
+
+
+/* btn hover */
+.btn-hover:hover{
+  background-color: #FF7400 !important;
+  border: 1px solid white !important;
+  color: white !important;
+}
+
+
+/* footer */
+
+/* Social Media Icon Hover Effects */
+.social-icon img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Footer Navigation Links Hover Effects */
+
+
+
+
+.footer-link {
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin: 20px;
+}
+
+.footer-link:hover {
+  color: #FF7400 !important; /* Change this to any color you prefer */
+  transform: scale(1.1) !important; /* Slightly enlarge the link on hover */
+}
