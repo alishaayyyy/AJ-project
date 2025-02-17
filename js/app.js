@@ -15,3 +15,5 @@ function toggleWishlist(event, btn) {
     icon.classList.add('far');
   }
 }
+
+

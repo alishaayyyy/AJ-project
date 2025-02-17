@@ -451,3 +451,70 @@ body {
   color: #FF7400 !important; /* Change this to any color you prefer */
   transform: scale(1.1) !important; /* Slightly enlarge the link on hover */
 }
+
+
+
+
+/* login page styling */
+
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+} */
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-control {
+  border-radius: 10px;
+  height: 40px;
+  padding: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0069d9;
+}
+
+/* welcome text */
+.welcome-text {
+  font-size: 36px;
+  font-weight: bold;
+  color:#FF7400;
+  
+  }
+  
+  .typed-text {
+  font-family: Arial Black;
+  }
+  
+  .cursor {
+  border-right: 2px solid #ffffff;
+  animation: blink 0.5s infinite;
+  }
+  
+  @keyframes blink {
+  0% {
+  opacity: 1;
+  }
+  100% {
+  opacity: 0;
+  }
+  }
