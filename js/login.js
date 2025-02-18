@@ -14,7 +14,7 @@ signInWithEmailAndPassword(auth, email, password)
     // Signed in 
     const user = userCredential.user;
     window.location.href = "../index.html";
-    alert("heloow")
+    alert("Login successfully")
     // ...
   })
   .catch((error) => {

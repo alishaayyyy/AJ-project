@@ -18,7 +18,7 @@ form.addEventListener("submit", async (e) => {
 
         // Successfully signed up
         const user = userCredential.user;
-        alert("User signed up successfully!");
+        alert("signed up successfully!");
 
         // Redirect to login page or dashboard (if needed)
         // window.location.href = './login.html'; // Uncomment to redirect

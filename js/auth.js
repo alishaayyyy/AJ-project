@@ -1,7 +1,9 @@
 // Import the necessary functions from Firebase SDKs
 // Use the same version for both the app and auth SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js"; // Use the same version for app
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js"; // Update this to the same version
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signOut
+ } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js"; // Update this to the same version
 
 
 // Your Firebase configuration (make sure it's correct)
@@ -21,6 +23,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);  // Pass the initialized app to getAuth
 
 // Export the Firebase Authentication functions and the auth instance
-export { signInWithEmailAndPassword, auth, createUserWithEmailAndPassword };
+export { signInWithEmailAndPassword, auth, createUserWithEmailAndPassword,signOut };
 
 // let user = auth.currentUser;
