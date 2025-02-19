@@ -226,7 +226,7 @@ background-color: white !important;
 .view {
   font-size: 20px;
   color: #fff; /* White color for icons */
-  margin-right: 2px;
+  margin-left: 900px;
   transition: all 0.3s ease; /* Smooth transition for all effects */
 }
 
