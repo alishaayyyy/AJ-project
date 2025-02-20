@@ -12,7 +12,7 @@ logout.addEventListener('click', (e) => {
         // User is logged in, proceed to log out
         signOut(auth).then(() => {
             alert("Logged out successfully!");
-            window.location.href = "../index.html"; // Redirect to homepage (or any other page)
+           // window.location.href = "../index.html"; // Ensure the path to index.html is correct
         })
         .catch((error) => {
             // Handle sign-out errors
@@ -23,8 +23,7 @@ logout.addEventListener('click', (e) => {
         // If no user is logged in
         alert("You are already signed out.");
     }
-});
-
+})    
 
 
   // const user = auth.currentUser; // Get the current user
