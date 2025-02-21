@@ -37,6 +37,7 @@ body{
 /* Navbar links color */
 .navbar-nav .nav-link {
   color: white !important;
+  font-family: Timmana, serif;
 }
 
 .navbar-nav .nav-link:hover {
@@ -131,6 +132,7 @@ a:hover .icon {
 /* Styling for dropdown items */
 .dropdown-item {
   color: white !important; /* White color for dropdown items */
+  font-family: Timmana, serif;
   padding: 10px 20px;
   transition: background-color 0.3s ease, color 0.3s ease; 
 }
@@ -305,6 +307,7 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  font-family: Timmana, serif;
 }
 
 .recipe-card:hover {
@@ -533,11 +536,12 @@ font-size: 1.2em;
 .policy h4{
   text-align: center;
   font-size: 1.2em;
-  
+  font-family: Timmana, serif; 
   }
   
 .policy h4:hover{
   color: #fb854e;
+
 }
 
 .orng{
@@ -577,6 +581,13 @@ list-style-type: none;
    border-bottom: 1px solid white;
   transition-duration: 0.7s ;
 }
+
+.sec-ul #special:hover{
+  color: #ff641d;
+   border-bottom: 1px solid white;
+  transition-duration: 0.7s ;
+}
+
 
 .policy{
   width: 300px;
@@ -675,6 +686,7 @@ text-align: center;
   border: none;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Timmana, serif;
 
 }
 

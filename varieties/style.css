@@ -1,0 +1,610 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #333333; /* Light gray for a modern look */
+    background-color: #000000;
+    color: #080808;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   
+}
+
+
+
+/* ............. Navbar.................... */
+
+
+  /* logo on the left */
+  
+  .navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* navbar items in the center */
+  .navbar-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+   
+  }
+  
+  /* Logo size */
+  .logo {
+    max-height: 50px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .logo:hover {
+    color: #ff6347; 
+    transform: scale(1.3); 
+    text-shadow: 0px 0px 10px rgba(255, 99, 71, 0.8);
+    cursor: pointer; 
+  }
+
+  .phone{
+    font-size: 1em;
+    font-family: "WindSong", serif;
+  }
+  
+  /* Navbar links color */
+  .navbar-nav .nav-link {
+    color: white !important;
+    font-family: Timmana, serif;
+  }
+  
+  .navbar-nav .nav-link:hover {
+   color: #FF7400 !important;
+  }
+  
+  
+  
+
+  /* Center align the text */
+  .navbar-nav {
+    font-size: 1.2em;
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  /* Align search bar to the right */
+  .d-flex {
+    justify-content: flex-end;
+  }
+  
+  /* Dropdown and other navbar items white */
+  .navbar-nav .nav-item.dropdown .nav-link {
+    color: white !important;
+  }
+  
+  
+  
+  /* Navbar brand text color */
+  .navbar-brand {
+    color: white !important;
+  }
+  
+  
+  
+  /* icon of navbar */
+  
+  .icon {
+    font-size: 20px;
+    color: #fff; /* White color for icons */
+    margin-right: 20px;
+    transition: all 0.3s ease; /* Smooth transition for all effects */
+  }
+  
+  /* Hover effects */
+  .icon:hover {
+    color: #ff6347; 
+    transform: scale(1.3); 
+    text-shadow: 0px 0px 10px rgba(255, 99, 71, 0.8);
+    cursor: pointer; 
+  }
+  
+  
+  a:hover .icon {
+    color: #ff6347; 
+    transform: scale(1.3); 
+    text-shadow: 0px 0px 10px rgba(255, 99, 71, 0.8); 
+  }
+  
+  
+  
+  /* dropdown hover effect by blocking  */
+  @media only screen and (min-width:750px) {
+    .dropdown:hover .dropdown-menu{
+      display: block;
+    }
+  
+  
+  
+  }
+  
+  
+  /* Dropdown menu styling */
+  .dropdown-menu {
+    background-color: black; 
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); 
+    opacity: 0; 
+    visibility: hidden; 
+    transform: translateY(-10px); 
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; 
+  }
+  
+  /* Show dropdown on hover */
+  .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible; 
+    transform: translateY(0); 
+  }
+  
+  /* Styling for dropdown items */
+  .dropdown-item {
+    color: white !important; /* White color for dropdown items */
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    font-family: Timmana, serif;
+     
+  }
+  
+  /* Hover effect for dropdown items */
+  .dropdown-item:hover {
+    background-color: #FF7400; 
+    color: black !important;
+    border-radius: 5px; 
+  }
+  
+  /* Divider styling */
+  .dropdown-divider {
+    background-color: #FF7400; /* Orange color for the divider */
+  }
+
+
+
+/* slider */
+
+
+.slidemain{
+    height: 100px !important;
+}
+
+.slider-img{
+    width: 100%;
+    height: 478px !important;
+    border-radius: 0px 0px 18px 18px;
+}
+
+.textc{
+    text-align: center;
+    font-family: "Cute Font", serif;
+    font-size: 5em;
+    color: #f5f2f1;
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin-bottom: 2em;
+}
+  
+/* .textc:hover{
+    color: #fdfcfc;
+} */
+  @media (max-width:350px){
+    .recipe-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px; 
+    }
+  }
+
+
+
+.recipe-img-full{
+    background-image: url(https://img.sndimg.com/food/image/upload/q_92,fl_progressive,w_1200,c_scale/v1/img/recipes/23/22/5/bDrqWavHSnG7MshUgTCT_oatmealwaffles3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    border-radius: 0px 0px 15px 15px;
+
+}
+
+.disflex{
+    display: flex !important;
+
+}
+
+
+
+
+
+@media (max-width:500px){
+    .recipe-img-full{
+        height: 200px;
+    }
+  }
+
+
+  .recipes-section{
+    padding: 2em;
+  }
+
+  .recipes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px 20px; 
+
+
+  }
+  
+  .recipe-card {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    font-family: Timmana, serif;
+  }
+  
+  .recipe-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .recipe-card-content {
+    padding: 15px;
+    color: white;
+  }
+  
+  .recipe-card h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #FF7400;
+  }
+  
+  .recipe-card p {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #ccc;
+  }
+  
+  .heart-icon {
+    font-size: 1.5em;
+    color: white;
+    float: right;
+    cursor: pointer;
+  }
+  
+  .heart-icon.filled {
+    color: #FF7400;
+  }
+  
+  /* Recipe details page */
+  .recipe-details {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .recipe-details img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .recipe-details h2 {
+    margin-top: 0;
+    color: #FF7400;
+  }
+  
+  .recipe-details .summary {
+    font-size: 1.1em;
+    color: #e6e6e6;
+    margin: 15px 0;
+  }
+  
+  .recipe-details h3 {
+    color: #ffffff;
+  }
+  
+  .recipe-details ul {
+    list-style: square;
+    padding-left: 20px;
+    margin: 10px 0;
+  }
+  
+  .recipe-details p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #e6e6e6;
+  }
+  
+  .back-button {
+    background-color: #FF7400;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .back-button:hover {
+    background-color: #c05803;
+  }
+
+  
+  .heading {
+    text-align: center;
+    color: #FF7400;
+    margin: 20px 0;
+    font-size: 2.5em;
+  }
+  
+  .recipes-section {
+    margin: 40px 0;
+  }
+  
+  .recipes-section h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+
+
+.orh3{
+  color: orangered !important;
+}
+
+
+.fulldetailul li{
+  color: #fcf3f0 !important;
+  }
+
+
+
+
+
+.fontin{
+  font-family: "WindSong", serif;
+font-weight: bold;
+
+}
+
+
+/* ............. footer.................... */
+.footer{
+    margin-top: 2em;
+    max-width: 100vw;
+    min-height: 250PX;
+    padding: 2em;
+    background-color: black;
+    color: antiquewhite;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+    /* flex-wrap: wrap; */
+    box-shadow: rgba(243, 243, 243, 0.76) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    
+    
+
+}
+
+.logo-foot{
+   
+    color: #ff5c10;
+    font-family: "WindSong", serif;
+}
+
+.logo-span{
+    color: #ffeae0;
+     border-bottom: 4px double #ffeae0;
+   
+}
+
+.logo-b{
+    border: none;
+}
+
+
+.icon-box{
+    display: flex;
+    justify-content: space-around;
+    justify-content: center;
+    gap: 0.6em;
+}
+
+.icons{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: rgb(253, 120, 25);
+    text-align: center;
+    font-size: 1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    transition: transform 0.3s ease;
+}
+
+.icons:hover{
+   color: #fa79de;
+    border: 2px solid rgb(255, 255, 255);
+    transform: translateY(-10px); 
+    background-color: #fb854e00;
+   
+}
+
+
+.facebook:hover{
+    color: #12a4ff;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: #fb854e00;
+}
+
+.pint:hover{
+    color: #cd0700;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: #fb854e00;
+}
+
+.utube:hover{
+    color: #cd0700;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: #fb854e00;
+}
+
+
+.policy p{
+text-align: center;
+margin-top: 1em;
+font-family: "Cute Font", serif;
+font-size: 1.2em;
+
+}
+
+.policy h4{
+    text-align: center;
+    font-size: 1.2em;
+    font-family: Timmana, serif;
+    }
+    
+.policy h4:hover{
+    color: #fb854e;
+}
+
+.orng{
+ text-align: center;  
+ font-family: "WindSong", serif; 
+ 
+}
+.widimg{
+  width: 45;
+  height: 50px;
+}
+
+
+ .orng:hover{
+    color: #fb854e; 
+}
+
+
+.sec-ul{
+    list-style-type: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-family: "Style Script", serif;
+    
+
+}
+
+.sec-ul li:hover{
+    color: #ff641d;
+     margin-left: 1em;
+     border-bottom: 1px solid white;
+    transition-duration: 0.7s ;
+}
+
+.policy{
+    width: 300px;
+}
+
+
+.cop-grey{
+  color: rgb(176, 175, 175);
+  }
+  
+  .copyrigth{
+      max-width: 100vw;
+      border-top: 2px solid antiquewhite;
+      background-color: black;
+      padding: 0.6em;
+      text-align: center;
+      color: #ffeae0;
+  }
+
+
+/* footer media queries */
+
+@media (max-width:870px){
+  .policy{
+    width: 250px;
+}
+}
+@media (max-width:820px){
+  .footer{
+    display: block;
+  }
+  .policy{
+    width: 100%;
+  }
+  .sec-ul{
+    display: flex;
+    gap: 2em;
+    justify-content: space-evenly;
+    margin-top: 2em;
+    flex-wrap: wrap;
+  }
+  .icon-box{
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+@media (max-width:640px){
+ .sec-ul{
+  display: block;
+  margin-left: -1em;
+  margin-bottom: 2em;
+ }
+ .footer{
+  justify-content: center;
+ }
+
+ .sec-ul li{
+text-align: center;
+
+ }
+ .sec-ul li:hover{
+  color: #ff641d;
+   margin-left: 1em;
+   border-bottom: none;
+  transition-duration: none ;
+}
+
+} 
+
+@media (max-width:350px){
+  .recipes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+  
+}
+
+
+
+
