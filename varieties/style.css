@@ -320,6 +320,11 @@ body {
     color: #e6e6e6;
     margin: 15px 0;
   }
+
+  .recipe-details .summary a{
+      color: rgb(255 255 255);
+      text-decoration: underline;
+  }
   
   .recipe-details h3 {
     color: #ffffff;
@@ -329,6 +334,7 @@ body {
     list-style: square;
     padding-left: 20px;
     margin: 10px 0;
+    
   }
   
   .recipe-details p {
@@ -380,7 +386,11 @@ body {
   color: #fcf3f0 !important;
   }
 
-
+  dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: white;
+}
 
 
 
