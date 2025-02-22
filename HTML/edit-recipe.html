@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="../css/style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Edit Recipe</h1>
+        <button id="logout-btn">Logout</button> <!-- Logout button -->
+    </header>
+
+    <!-- Recipe Form -->
+    <section class="recipe-form">
+        <form id="edit-recipe-form">
+            <div>
+                <label for="recipe-title">Recipe Title</label>
+                <input type="text" id="recipe-title" placeholder="Enter Recipe Title">
+            </div>
+
+            <div>
+                <label for="recipe-description">Description</label>
+                <textarea id="recipe-description" placeholder="Enter Recipe Description"></textarea>
+            </div>
+
+            <div>
+                <label for="recipe-ingredients">Ingredients</label>
+                <textarea id="recipe-ingredients" placeholder="Enter Ingredients"></textarea>
+            </div>
+
+            <div>
+                <label for="recipe-instructions">Instructions</label>
+                <textarea id="recipe-instructions" placeholder="Enter Cooking Instructions"></textarea>
+            </div>
+
+            <div>
+                <button type="submit">Save Changes</button>
+            </div>
+        </form>
+    </section>
+
+    <script type="module" src="../js/edit-recipe.js"></script>
+</body>
+</html>

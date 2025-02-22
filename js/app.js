@@ -18,17 +18,18 @@ function toggleWishlist(event, btn) {
 }
 
 // user login or not
+// user login or not
 
-// This function will be triggered when the button is clicked
+//import { auth } from './auth.js';
+
 document.getElementById("profile").onclick = function () {
-  // const auth = getAuth();
   const user = auth.currentUser; // Get the current user
 
   if (user) {
       // User is logged in, redirect to profile.html
-      window.location.href = 'HTML/profile.html';  // Update the path correctly
+      window.location.href = 'HTML/profile.html';
   } else {
       // User is not logged in, redirect to login.html
-      window.location.href = 'HTML/login.html';  // Corrected path to login.html
+      window.location.href = 'HTML/login.html';
   }
 };
