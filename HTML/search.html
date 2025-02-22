@@ -42,7 +42,7 @@
             padding: 80px 20px 20px;
         }
 
-        /* .search-container {
+        .search-container {
             position: fixed;
             top: 20px;
             width: 100%;
@@ -54,34 +54,15 @@
 
         #searchInput {
             width: 100%;
-            padding: 15px 20px;
+            padding: 15px 20px 10px 50px;
             font-size: 1.2em;
             border: none;
             border-radius: 30px;
             background: #333;
             color: white;
             outline: none;
+            margin-top: 70px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        } */
-
-        .search-container {
-            position: relative;
-            width: 90%;
-            max-width: 800px;
-            margin: 100px auto 30px;
-        }
-
-        #searchInput {
-            width: 100%;
-            padding: 15px 20px 15px 45px;
-            font-size: 1.2em;
-            border: none;
-            border-radius: 30px;
-            background: #333;
-            color: white;
-            outline: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            font-family: 'Average', sans-serif;
         }
 
         .search-icon {
@@ -90,19 +71,21 @@
             top: 50%;
             transform: translateY(-50%);
             color: #FF7400;
+            margin-top: 35px;
             z-index: 1;
         }
 
         /* Fix navbar overlap */
-        body {
-            padding-top: 80px; /* Add space for fixed navbar */
-        }
+        /* body {
+            padding-top: 80px; 
+        } */
 
         nav.navbar {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            margin-left: -10px;
         }
         #searchInput:focus {
             box-shadow: 0 0 10px #FF7400;
@@ -118,25 +101,62 @@
             margin-top: 10px;
             display: none;
         }
+/* Loading Message */
+.loading {
+    text-align: center;
+    font-size: 1.5em;
+    color: #FF7400;
+    padding: 50px;
+}
 
-        .suggestion-item {
-            padding: 12px 20px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+/* Suggestion Items */
+.suggestion-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
 
-        .suggestion-item:hover {
-            background: #FF7400;
-            color: #1c1c1c;
-        }
+.suggestion-item:hover {
+    background: #FF7400;
+    color: #000;
+}
 
-        /* Your existing recipes CSS */
-        .recipes-container {
+/* Error Message */
+.error-message {
+    text-align: center;
+    padding: 40px;
+    display: none;
+}
+
+.error-message ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.error-message li {
+    padding: 8px 20px;
+    background: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.error-message li:hover {
+    background: #FF7400;
+    color: #000;
+}
+
+ /* Your existing recipes CSS */
+.recipes-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   padding: 20px;
+  margin-top: 70px;
 }
 
 .recipe-card {
@@ -264,27 +284,6 @@
 .back-button:hover {
   transform: translateX(-5px);
 }
-.error-message {
-    text-align: center;
-    padding: 50px;
-    color: #FF7400;
-}
-
-.error-message .emoji {
-    font-size: 4rem;
-    margin-bottom: 20px;
-}
-
-.error-message h2 {
-    font-family: 'Caveat', cursive;
-    font-size: 2.5rem;
-}
-
-.error-message p {
-    color: #ccc;
-    font-size: 1.1rem;
-}
-
 
     </style>
 </head>
@@ -377,6 +376,19 @@
         <!-- Recipe cards will be injected here dynamically -->
     </div>
 
+    <!-- Error Message Section -->
+<div id="errorMessage" class="error-message" style="display: none;">
+    <div class="emoji">😞</div>
+    <h2>No Recipes Found!</h2>
+    <p>Try these popular searches:</p>
+    <ul>
+        <li>Chicken</li>
+        <li>Biryani</li>
+        <li>Noodles</li>
+        <li>Dessert</li>
+    </ul>
+</div>
+
      <!-- footer -->
 
      <div class="footer">
@@ -416,185 +428,235 @@
          <span class="cop-grey">&copy; 2025 AJ. All rights reserved</span>  <h1 class="logo-foot"><span class="logo-span logo-b">A</span>  J</h1>
       </div> 
 
-    <script>
+      <script>
 
-        // const API_KEY = 'ad210d8303dc46df8c618aeb023e506a'; //KhatriJeiya
-    const API_KEY = 'e66a81dcbd274ba1974c9406d76df8c9'; //atika
-    // const API_KEY = 'ec89a9f243a343caa5f21add5a045576'; //alisha2
-    // const API_KEY = '5564031193454379b491545b1de39e2d'; //alisha
-    // const API_KEY = '7ef1577b26a74418acf49eb98506d43b'; //jeiyakumari
-        
-        // Elements selection
+        // const ACTIVE_API_KEY = 'ad210d8303dc46df8c618aeb023e506a'; //KhatriJeiya
+      // const ACTIVE_API_KEY = 'e66a81dcbd274ba1974c9406d76df8c9'; //atika
+      const ACTIVE_API_KEY = 'ec89a9f243a343caa5f21add5a045576'; //alisha2
+      // const ACTIVE_API_KEY = '5564031193454379b491545b1de39e2d'; //alisha
+      // const ACTIVE_API_KEY = '7ef1577b26a74418acf49eb98506d43b'; //jeiyakumari
+    
+        // DOM Elements
         const searchInput = document.getElementById('searchInput');
-    const suggestionsDropdown = document.getElementById('suggestionsDropdown');
-
-    // Input debounce function (300ms delay)
-    function debounce(func, timeout = 300) {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        const recipesContainer = document.getElementById('recipes-container');
+        const suggestionsDropdown = document.getElementById('suggestionsDropdown');
+        
+        // Basic Debounce Function
+        const debounce = (func, delay=300) => {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func(...args), delay);
+            };
         };
+    
+        // Fetch Suggestions
+const fetchSuggestions = debounce(async (query) => {
+    try {
+        if(query.length < 2) {
+            suggestionsDropdown.style.display = 'none';
+            return;
+        }
+        
+        const response = await fetch(
+            `https://api.spoonacular.com/recipes/autocomplete?number=5&query=${query}&apiKey=${ACTIVE_API_KEY}`
+        );
+        
+        if(!response.ok) throw new Error('API limit exceeded');
+        
+        const data = await response.json();
+        suggestionsDropdown.innerHTML = data.map(item => `
+            <div class="suggestion-item" onclick="selectSuggestion('${item.title.replace(/'/g, "\\'")}')">
+                ${item.title}
+            </div>
+        `).join('');
+        
+        suggestionsDropdown.style.display = data.length ? 'block' : 'none';
+    } catch (error) {
+        suggestionsDropdown.style.display = 'none';
+        console.error('Suggestions error:', error);
     }
+});
 
-    // Autocomplete suggestions fetcher
-    const fetchSuggestions = debounce(async (query) => {
-        try {
-            const response = await fetch(
-                `https://api.spoonacular.com/recipes/autocomplete?number=10&query=${query}&apiKey=${API_KEY}`
-            );
-            const data = await response.json();
-            
-            suggestionsDropdown.innerHTML = data.map(item => `
-                <div class="suggestion-item" data-id="${item.id}">${item.title}</div>
+
+searchInput.addEventListener('input', (e) => {
+    fetchSuggestions(e.target.value.trim());
+});
+
+
+let selectedSuggestionIndex = -1;
+
+function updateSelection() {
+    document.querySelectorAll('.suggestion-item').forEach((item, index) => {
+        item.style.background = index === selectedSuggestionIndex ? '#FF7400' : '#1c1c1c';
+    });
+}
+
+        // Show Suggestions
+        function showSuggestions(suggestions) {
+            suggestionsDropdown.innerHTML = suggestions.map(item => `
+                <div class="suggestion-item" onclick="selectSuggestion('${item.title}')">
+                    ${item.title}
+                </div>
             `).join('');
             
-            suggestionsDropdown.style.display = data.length ? 'block' : 'none';
-            
-            // Suggestion click handler
-            document.querySelectorAll('.suggestion-item').forEach(item => {
-                item.addEventListener('click', async () => {
-                    searchInput.value = item.textContent;
-                    await fetchRecipes(item.textContent);
-                    suggestionsDropdown.style.display = 'none';
-                });
-            });
-        } catch (error) {
-            console.error('Suggestions error:', error);
+            suggestionsDropdown.style.display = suggestions.length ? 'block' : 'none';
         }
-    });
+    
+        // Select Suggestion
+        function selectSuggestion(query) {
+            searchInput.value = query;
+            suggestionsDropdown.style.display = 'none';
+            fetchRecipes(query);
+        }
+    
 
-    // Input event listener
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim();
-        if (query.length > 2) {
-            fetchSuggestions(query);
-        } else {
+searchInput.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if(query) {
+            fetchRecipes(query);
             suggestionsDropdown.style.display = 'none';
         }
-    });
+    }
+});
 
-    // Enter key handler
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const query = searchInput.value.trim();
-            if (query) {
-                fetchRecipes(query);
-                suggestionsDropdown.style.display = 'none';
+searchInput.addEventListener('keydown', (e) => {
+    const suggestions = document.querySelectorAll('.suggestion-item');
+    
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedSuggestionIndex = Math.min(selectedSuggestionIndex + 1, suggestions.length - 1);
+        updateSelection();
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedSuggestionIndex = Math.max(selectedSuggestionIndex - 1, -1);
+        updateSelection();
+    } else if (e.key === 'Enter' && selectedSuggestionIndex >= 0) {
+        e.preventDefault();
+        suggestions[selectedSuggestionIndex].click();
+    }
+});
+    
+        // Main Fetch Function
+        async function fetchRecipes(query = '') {
+            try {
+                recipesContainer.innerHTML = '<div class="loading">Loading...</div>';
+                
+                const url = query ? 
+    `https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=15&addRecipeInformation=true&apiKey=${ACTIVE_API_KEY}` :
+    `https://api.spoonacular.com/recipes/random?number=15&tags=indian,pakistani,chinese,italian,american,mexican,asian,thai,french,german,japanese&apiKey=${ACTIVE_API_KEY}`;
+                
+                const response = await fetch(url);
+                
+                if(!response.ok) throw new Error('Failed to fetch');
+                
+                const data = await response.json();
+                const recipes = query ? data.results : data.recipes;
+    
+                if(!recipes?.length) throw new Error('No recipes found');
+                
+                displayRecipes(recipes);
+                document.getElementById('errorMessage').style.display = 'none';
+            } catch (error) {
+                console.error('Fetch error:', error);
+                showError();
             }
         }
-    });
-
-    // Main recipe fetch function
-    async function fetchRecipes(query = '') {
-        try {
-            let apiUrl;
-            if (query) {
-                // Modified API URL for better matching
-                apiUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=20&cuisine=indian,pakistani&addRecipeInformation=true&instructionsRequired=true&fillIngredients=true&apiKey=${API_KEY}`;
-            } else {
-                apiUrl = `https://api.spoonacular.com/recipes/random?number=15&tags=indian,pakistani&apiKey=${API_KEY}`;
-            }
-
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            let recipes = query ? data.results : data.recipes;
-
-            // Enhanced error handling
-            if (!recipes || recipes.length === 0) {
-                throw new Error("No recipes found");
-            }
-
-            // Fetch details only for search results
-            if(query) {
-                recipes = await Promise.all(
-                    recipes.map(async recipe => {
-                        const res = await fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${API_KEY}`);
-                        return res.json();
-                    })
-                );
-            }
-
-            displayRecipes(recipes);
-        } catch (error) {
-            // Custom error message display
-            const container = document.getElementById('recipes-container');
-            container.innerHTML = `
-                <div class="error-message">
-                    <div class="emoji">😢</div>
-                    <h2>Oops! Recipe Not Found</h2>
-                    <p>We couldn't find any recipes matching your search.</p>
-                    <p>Try different keywords like "Chicken", "Biryani", or "Desserts"</p>
-                </div>
-            `;
-            console.error("Fetch error:", error);
-        }
-    }
-
-    // Display recipes function
-    function displayRecipes(recipes) {
-        const container = document.getElementById('recipes-container');
-        container.innerHTML = '';
-
-        recipes.forEach(recipe => {
-            const card = document.createElement('div');
-            card.classList.add('recipe-card');
-            card.innerHTML = `
-                <img src="${recipe.image}" alt="${recipe.title}">
-                <div class="recipe-card-content">
-                    <h3>${recipe.title}</h3>
-                    <span class="heart-icon" onclick="toggleHeart(event)">&#x2764;</span>
-                    <p>${recipe.summary?.replace(/<[^>]*>?/gm, '').substring(0, 100) || 'Description not available'}...</p>
-                </div>
-            `;
-
-            card.addEventListener('click', () => openRecipeDetails(recipe));
-            container.appendChild(card);
-        });
-    }
-
-    // Heart icon toggle
-    function toggleHeart(event) {
-        event.stopPropagation();
-        event.target.classList.toggle('filled');
-    }
-
-    // Recipe details viewer
-    async function openRecipeDetails(recipe) {
-        try {
-            const response = await fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${API_KEY}`);
-            const fullRecipe = await response.json();
+    
+        // Display Recipes
+        function displayRecipes(recipes) {
+            recipesContainer.innerHTML = '';
             
-            const container = document.getElementById('recipes-container');
-            container.innerHTML = `
+            recipes.forEach(recipe => {
+                const card = document.createElement('div');
+                card.className = 'recipe-card';
+                card.innerHTML = `
+                    <img src="${recipe.image}" alt="${recipe.title}" onerror="this.src='../assets/placeholder.jpg'">
+                    <div class="recipe-card-content">
+                        <h3>${recipe.title}</h3>
+            <span class="heart-icon" onclick="toggleHeart(event)">&#x2764;</span>
+                        <p>${recipe.summary?.replace(/<[^>]*>/g, '').substring(0,100) || 'Click to view details'}</p>
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => showRecipeDetails(recipe.id));
+                recipesContainer.appendChild(card);
+            });
+        }
+    
+        // Show Recipe Details
+        async function showRecipeDetails(recipeId) {
+            try {
+                recipesContainer.innerHTML = '<div class="loading">Loading details...</div>';
+                
+                const response = await fetch(
+                    `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${ACTIVE_API_KEY}`
+                );
+                
+                if(!response.ok) throw new Error('Failed to load details');
+                
+                const recipe = await response.json();
+                renderRecipeDetails(recipe);
+            } catch (error) {
+                console.error('Details error:', error);
+                showError();
+            }
+        }
+    
+        // Render Recipe Details
+        function renderRecipeDetails(recipe) {
+            recipesContainer.innerHTML = `
                 <div class="recipe-details">
-                    <button class="back-button" onclick="fetchRecipes()">&#8592; Back to Recipes</button>
-                    <h2>${fullRecipe.title}</h2>
-                    <img src="${fullRecipe.image}" alt="${fullRecipe.title}">
-                    <div class="content-section">
-                        ${fullRecipe.summary ? `<p class="summary">${fullRecipe.summary.replace(/<[^>]*>?/gm, '')}</p>` : ''}
-                        <div class="ingredients-section">
-                            <h3>Ingredients (${fullRecipe.extendedIngredients.length})</h3>
-                            <ul class="custom-list">
-                                ${fullRecipe.extendedIngredients.map(ing => `<li>${ing.original}</li>`).join('')}
-                            </ul>
-                        </div>
-                        <div class="instructions-section">
-                            <h3>Step-by-Step Instructions</h3>
-                            <div class="instructions">${fullRecipe.instructions || "<p>Instructions coming soon!</p>"}</div>
-                        </div>
+                    <button class="back-button" onclick="fetchRecipes()">← Back</button>
+                    <h2>${recipe.title}</h2>
+                    <img src="${recipe.image}" alt="${recipe.title}">
+                    
+                    <div class="ingredients-section">
+                        <h3>Ingredients:</h3>
+                        <ul>${recipe.extendedIngredients.map(i => `<li>${i.original}</li>`).join('')}</ul>
+                    </div>
+                    
+                    <div class="instructions-section">
+                        <h3>Instructions:</h3>
+                        <div>${recipe.instructions || 'No instructions available'}</div>
                     </div>
                 </div>
             `;
-        } catch (error) {
-            console.error("Details error:", error);
         }
+    
+        // Error Handling
+        function showError() {
+            document.getElementById('errorMessage').style.display = 'block';
+            recipesContainer.innerHTML = '';
+        }
+    
+
+        // Popular Search Handler
+        function searchPopular(query) {
+            searchInput.value = query;
+            fetchRecipes(query);
+        }
+    
+
+            // Toggle heart icon
+    function toggleHeart(event) {
+      event.stopPropagation();
+      const heart = event.target;
+      heart.classList.toggle('filled');
     }
 
-    // Initial load
-    fetchRecipes();
 
+        // Initial Load
+        fetchRecipes();
+    
+        // Click Handler for Search Icon
+        document.querySelector('.fa-magnifying-glass.search-icon').addEventListener('click', () => {
+            const query = searchInput.value.trim();
+            if(query) fetchRecipes(query);
+        });
     </script>
+</script>
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
           <script type="module" src="./js/logout.js"></script>
           <script type="module" src="../js/app.js"></script>
