@@ -4,137 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Recipe</title>
-    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css"> <!-- Link to your CSS file -->
-    
-    <!-- google fonts -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Average&family=Timmana&display=swap" rel="stylesheet">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 <body>
 
-           <!-- NAV BAR -->
-   <nav class="navbar navbar-expand-lg " style="background-color: black; padding: 0.3em !important;">
-    <div class="container-fluid" >
-      <a class="navbar-brand" href="#"><img src="../assets/logo-select.png" alt="" class="logo"><span
-         style="color: #ff6347 !important;">AJ</span></a>
-      <button class="navbar-toggler btn1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #FF7400 !important;">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto" >
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./read-more.html" >About Us</a>
-          </li>
-          <!-- first dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             Varieties
-            </a>
-            <ul class="dropdown-menu" style="background-color: black; ">
-              <li><a class="dropdown-item" href="../varieties/index.html" >Breakfast</a></li>
-              <li><a class="dropdown-item" href="../varieties/Assets/html/veg-nonveg.html">Veg/Non-Veg</a></li>
-              <li><a class="dropdown-item" href="../varieties/Assets/html/lunch-dinner.html">Lunch/Dinner</a></li>
-              <li><a class="dropdown-item" href="../varieties/Assets/html/seafood.html">Sea-Food</a></li>
-              <li><a class="dropdown-item" href="../varieties/Assets/html/dessert.html">Desserts</a></li>
-              <li><a class="dropdown-item" href="../varieties/Assets/html/drinks.html">Drinks</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="./search.html">Search Something Else</a></li>
-            </ul>
-          </li>
 
-          <!-- second dropdown -->
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle main" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             Season Special
-            </a>
-            <ul class="dropdown-menu" style="background-color: black;">
-              <li><a class="dropdown-item" href="./SummerRecipes.html">Summer</a></li>
-              <li><a class="dropdown-item" href="./SpringRecipes.html">Spring</a></li>
-              <li><a class="dropdown-item" href="./FallRecipes.html">Fall</a></li>
-              <li><a class="dropdown-item" href="./WinterRecipes.html">Winter</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="./search.html">Search Something Else</a></li>
-            </ul>
-          </li>
-        
-
-        </ul>
-
-        <!-- right section div -->
-        <div >
-          <!-- search -->
-          <i class="fa-solid fa-magnifying-glass icon" onclick="window.location.href='./search.html'"></i>
-          <!-- likes -->
-          <a href="#"><i class="fa-solid fa-heart icon" ></i></a>
-          <!-- login/signin -->
-
-          <i id="profile" class="fa-solid fa-user icon"></i>
-          <a style="color: white; font-size:1.5em;"  href="./add-recipe.html"><i class="fa-solid fa-plus icon"></i></a>
-          <i id="logout" style="color: white; font-size:1.2m; margin-left: 4px;" class="fa-solid fa-right-from-bracket icon"></i>
-
-
-        </div>
-
-
-      </div>
-    </div>
-  </nav>
-
+    <style>
+        /* Base Styles */
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Arial', sans-serif;
+      }
+      
+      body {
+          background-color: #f4f4f9;
+          color: #000000;
+          padding: 20px;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      
+      /* Header */
+      header {
+          background-color: #1e2a47;
+          color: #fff;
+          text-align: center;
+          padding: 20px;
+          border-radius: 10px;
+          width: 80%;
+          margin-bottom: 30px;
+      }
+      
+      h1 {
+          font-size: 2rem;
+          letter-spacing: 2px;
+      }
+      
+      #logout-btn {
+          background-color: #ff4757;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          cursor: pointer;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+      }
+      
+      #logout-btn:hover {
+          background-color: #e84118;
+      }
+      
+      /* Recipe Form Section */
+      .recipe-form {
+          background-color:#ff641d;
+          border-radius: 10px;
+          padding: 30px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          width: 80%;
+          max-width: 500px;
+          animation: fadeIn 1s ease-in-out;
+      }
+      
+      /* Form Input Fields */
+      .recipe-form div {
+          margin-bottom: 20px;
+      }
+      
+      label {
+          font-size: 1rem;
+          margin-bottom: 5px;
+          display: block;
+      }
+      
+      input, textarea {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          font-size: 1rem;
+          margin-top: 5px;
+          transition: border 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      /* Focus Effects */
+      input:focus, textarea:focus {
+          border-color: #1e2a47;
+          box-shadow: 0 0 8px rgba(30, 42, 71, 0.2);
+          outline: none;
+      }
+      
+      /* Button Styling */
+      button {
+          background-color: black;
+          color: #fff;
+          border: none;
+          padding: 12px 20px;
+          font-size: 1rem;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+      
+      button:hover {
+          background-color: #3742fa;
+      }
+      
+      /* Add Animation to Form */
+      @keyframes fadeIn {
+          0% {
+              opacity: 0;
+              transform: translateY(20px);
+          }
+          100% {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+      
+      /* Media Queries */
+      @media (max-width: 768px) {
+          header h1 {
+              font-size: 1.5rem;
+          }
+      
+          .recipe-form {
+              width: 90%;
+          }
+      }
+      
+      </style>
     <!-- Header Section -->
-    <header>
-        <h1>Edit Recipe</h1>
-        <button id="logout-btn">Logout</button> <!-- Logout button -->
-    </header>
+   
+     
 
     <!-- Recipe Form -->
     <section class="recipe-form">
         <form id="edit-recipe-form">
+            <div style="text-align: center;"><h1 style="color: white;">Edit Recipe</h1></div>
             <div>
                 <label for="recipe-title">Recipe Title</label>
-                <input type="text" id="recipe-title" placeholder="Enter Recipe Title">
+                <input type="text" id="recipe-title" placeholder="Enter Recipe Title" required>
             </div>
 
             <div>
                 <label for="recipe-description">Description</label>
-                <textarea id="recipe-description" placeholder="Enter Recipe Description"></textarea>
+                <textarea id="recipe-description" placeholder="Enter Recipe Description" required></textarea>
             </div>
 
             <div>
                 <label for="recipe-ingredients">Ingredients</label>
-                <textarea id="recipe-ingredients" placeholder="Enter Ingredients"></textarea>
+                <textarea id="recipe-ingredients" placeholder="Enter Ingredients" required></textarea>
             </div>
 
             <div>
                 <label for="recipe-instructions">Instructions</label>
-                <textarea id="recipe-instructions" placeholder="Enter Cooking Instructions"></textarea>
+                <textarea id="recipe-instructions" placeholder="Enter Cooking Instructions" required></textarea>
             </div>
 
             <div>
@@ -142,50 +170,7 @@
             </div>
         </form>
     </section>
-         <!-- footer -->
 
-<div class="footer">
-    <div>
-         <h1 class="logo-foot">  <span class="logo-span"> <img class="widimg" src="https://github.com/alishaayyyy/AJ-project/blob/main/assets/logo-select.png?raw=true" alt="">A</span> <span class="span-s"> J</h1>
-    <div class="icon-box">
-        <i class="fa-brands fa-instagram font icons"></i>
-        <i class="fa-brands fa-youtube icons utube "></i>
-        <i class="fa-brands fa-facebook-f icons facebook"></i>
-        <i class="fa-brands fa-pinterest-p icons pint"></i>
-    </div>
-    </div>
-    
-    <div class="middle-sec">
-        <ul class="sec-ul font-wf">
-            <li><a class="nav-link " href="../index.html">Home</a></li>
-            <li><a class="nav-link " href="./read-more.html">About</a></li>
-            <li><a class="nav-link " href="../varieties/index.html">Varieties</a></li>
-            <li>Reviews</li>
-            <span id="special"><a class="nav-link " href="./BestRecipes.html">Season special</a></span>
-        </ul>
-    </div>
-  
-    <div class="policy" ><h4>Privacy Policy</h4>
-      
-        <p>"We ensure that your personal information is kept secure and not shared with any third-party.
-          Your data is only used to provide better services on our website."</p>
-   </div>
-    
-   <div class="policy"><h2 class="orng">Thank You</h2>
-          
-    <p class="text-center">"Your support and interest mean the world to us We're dedicated to bringing you the best recipes and culinary experiences from around the world. Stay tuned for more delicious updates!".</p>
-  </div>
-    </div>
-  
-  <div class="copyrigth">
-     <span class="cop-grey">&copy; 2025 AJ. All rights reserved</span>  <h1 class="logo-foot"><span class="logo-span logo-b">A</span>  J</h1>
-  </div> 
-  
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script type="module" src="../AJ-project/js/logout.js"></script>
-  <script type="module" src="../AJ-project/js/app.js"></script>
     <script type="module" src="../js/edit-recipe.js"></script>
 </body>
 </html>

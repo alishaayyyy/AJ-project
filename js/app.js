@@ -33,3 +33,17 @@ document.getElementById("profile").onclick = function () {
       window.location.href = 'HTML/login.html';
   }
 };
+
+
+document.getElementById("add").onclick = function () {
+  const user = auth.currentUser; // Get the current user
+
+  if (user) {
+      // User is logged in, redirect to profile.html
+      window.location.href = 'HTML/add-recipe.html';
+  } else {
+      // User is not logged in, redirect to login.html
+      window.location.href = 'HTML/login.html';
+  }
+};
+

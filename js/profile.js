@@ -1,4 +1,4 @@
-import { initializeApp, getAuth, getFirestore, collection, query, where, getDocs, doc, deleteDoc, onAuthStateChanged,firebaseConfig } from "./auth.js";
+import { initializeApp, getAuth, getFirestore, collection, query, where, getDocs, doc, deleteDoc, onAuthStateChanged, firebaseConfig } from "./auth.js";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -50,21 +50,41 @@ async function fetchUserRecipes(userId) {
     recipeElement.classList.add("recipe-item");
 
     recipeElement.innerHTML = `
-      <h4>${recipeData.title}</h4>
-      <p>${recipeData.description}</p>
-      <button onclick="editRecipe('${recipeId}')">Edit</button>
-      <button onclick="deleteRecipe('${recipeId}')">Delete</button>
+      <div class="recipe-card">
+        <h4>${recipeData.title}</h4>
+        <p class="recipe-description"><strong>Description: </strong>${recipeData.description}</p>
+        <p class="recipe-instructions"><strong>Instructions: </strong> ${recipeData.instructions}</p>
+        <div class="recipe-footer">
+          <button class="edit-btn" data-recipe-id="${recipeId}">Edit</button>
+          <button class="delete-btn" data-recipe-id="${recipeId}">Delete</button>
+        </div>
+      </div>
     `;
 
     recipesContainer.appendChild(recipeElement);
+  });
+
+  // Now bind the event listeners for "Edit" and "Delete"
+  const editButtons = document.querySelectorAll('.edit-btn');
+  const deleteButtons = document.querySelectorAll('.delete-btn');
+
+  editButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const recipeId = e.target.getAttribute('data-recipe-id');
+      editRecipe(recipeId);
+    });
+  });
+
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const recipeId = e.target.getAttribute('data-recipe-id');
+      deleteRecipe(recipeId);
+    });
   });
 }
 
 // Function to edit a recipe (navigate to an edit page)
 function editRecipe(recipeId) {
-  // Log recipeId to ensure it's being passed correctly
-  console.log("Editing recipe with ID: " + recipeId);
-  
   window.location.href = `edit-recipe.html?recipeId=${recipeId}`;
 }
 
