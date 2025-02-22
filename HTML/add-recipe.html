@@ -33,15 +33,13 @@
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-</head>
-<body>
+
 <style>
   /* Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
 }
 
 body {
@@ -49,13 +47,11 @@ body {
     color: #000000;
     padding: 20px;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
 }
 
 /* Header */
-header {
+/* header {
     background-color: #1e2a47;
     color: #fff;
     text-align: center;
@@ -68,7 +64,7 @@ header {
 header h1 {
     font-size: 2rem;
     letter-spacing: 2px;
-}
+} */
 
 #logout-btn {
     background-color: #ff4757;
@@ -163,6 +159,8 @@ button:hover {
 }
 
 </style>
+</head>
+<body>
        <!-- NAV BAR -->
        <nav class="navbar navbar-expand-lg " style="background-color: black; padding: 0.3em !important;">
         <div class="container-fluid" >
@@ -224,7 +222,9 @@ button:hover {
               <!-- login/signin -->
     
               <i id="profile" class="fa-solid fa-user icon"></i>
-             <i id="logout" style="color: white;" class="fa-solid fa-right-from-bracket"></i>
+              <a style="color: white; font-size:1.5em;"  href="./add-recipe.html"><i class="fa-solid fa-plus icon"></i></a>
+              <i id="logout" style="color: white; font-size:1.2m; margin-left: 4px;" class="fa-solid fa-right-from-bracket icon"></i>
+    
             
             </div>
     
