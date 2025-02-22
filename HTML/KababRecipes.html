@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dessert Recipes🍵</title>
+  <title>Kabab Recipes🍵</title>
   <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="../css/style.css">
 
@@ -240,7 +240,7 @@
       </div>
     </div>
   </nav>
-  <h1 class="main-heading" style="padding-bottom: 1em; text-align: center; ">Dessert Recipes:</h1>
+  <h1 class="main-heading" style="padding-bottom: 1em; text-align: center; ">Kabab Recipes:</h1>
 
   <div id="recipes-container" class="recipes-container">
     <!-- Recipe cards will be injected here dynamically -->
@@ -288,10 +288,10 @@
   <script>
     // const API_KEY = 'ad210d8303dc46df8c618aeb023e506a'; //KhatriJeiya
     // const API_KEY = 'e66a81dcbd274ba1974c9406d76df8c9'; //atika
-    const API_KEY = 'ec89a9f243a343caa5f21add5a045576'; //alisha2
+    // const API_KEY = 'ec89a9f243a343caa5f21add5a045576'; //alisha2
     // const API_KEY = '5564031193454379b491545b1de39e2d'; //alisha
-    // const API_KEY = '7ef1577b26a74418acf49eb98506d43b'; //JeiyaKumari
-    const API_URL = `https://api.spoonacular.com/recipes/random?number=30&tags=dessert&apiKey=${API_KEY}`;
+    const API_KEY = '7ef1577b26a74418acf49eb98506d43b'; //JeiyaKumari
+    const API_URL = `https://api.spoonacular.com/recipes/complexSearch?query=seekh kebab,shami kebab,doner kebab,tikka kebab&number=30&apiKey=${API_KEY}`;
 
 
     // Fetch and display recipes
