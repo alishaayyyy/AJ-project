@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Recipes🍵</title>
+    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- google fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Average&family=Timmana&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Your existing CSS with modifications */
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 80px 20px 20px;
+        }
+
+        /* .search-container {
+            position: fixed;
+            top: 20px;
+            width: 100%;
+            max-width: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 30px;
+            background: #333;
+            color: white;
+            outline: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        } */
+
+        .search-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 100px auto 30px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px 15px 45px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 30px;
+            background: #333;
+            color: white;
+            outline: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-family: 'Average', sans-serif;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FF7400;
+            z-index: 1;
+        }
+
+        /* Fix navbar overlap */
+        body {
+            padding-top: 80px; /* Add space for fixed navbar */
+        }
+
+        nav.navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        #searchInput:focus {
+            box-shadow: 0 0 10px #FF7400;
+        }
+
+        .suggestions-dropdown {
+            position: absolute;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            background: #1c1c1c;
+            border-radius: 10px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .suggestion-item {
+            padding: 12px 20px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .suggestion-item:hover {
+            background: #FF7400;
+            color: #1c1c1c;
+        }
+
+        /* Your existing recipes CSS */
+        .recipes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.recipe-card {
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.recipe-card:hover {
+  transform: scale(1.05);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-card-content {
+  padding: 15px;
+  color: white;
+}
+
+.recipe-card h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #FF7400;
+}
+
+.recipe-card p {
+  margin: 10px 0;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.heart-icon {
+  font-size: 1.5em;
+  color: white;
+  float: right;
+  cursor: pointer;
+}
+
+.heart-icon.filled {
+  color: #FF7400;
+}
+
+/* Recipe details page */
+.recipe-details {
+  color: #ffffff !important;
+  padding: 30px;
+  line-height: 1.7;
+}
+
+.recipe-details h2 {
+  font-size: 2.5rem;
+  margin: 20px 0;
+  border-bottom: 2px solid #FF7400;
+  padding-bottom: 10px;
+}
+
+.recipe-details img {
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.content-section {
+  margin-top: 30px;
+}
+
+.ingredients-section, .instructions-section {
+  margin: 25px 0;
+  padding: 20px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+}
+
+.custom-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.custom-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+}
+
+.custom-list li:before {
+  content: "•";
+  color: #FF7400;
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.instructions {
+  white-space: pre-line;
+}
+
+/* Remove blue links */
+.instructions a,
+.summary a {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.instructions a:hover,
+.summary a:hover {
+  color: #FF7400 !important;
+  text-decoration: underline;
+}
+
+.back-button {
+  background: #FF7400;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+}
+.error-message {
+    text-align: center;
+    padding: 50px;
+    color: #FF7400;
+}
+
+.error-message .emoji {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.error-message h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 2.5rem;
+}
+
+.error-message p {
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+
+    </style>
+</head>
+<body>
+
+
+           <!-- NAV BAR -->
+   <nav class="navbar navbar-expand-lg " style="background-color: black; padding: 0.3em !important;">
+    <div class="container-fluid" >
+      <a class="navbar-brand" href="#"><img src="../assets/logo-select.png" alt="" class="logo"><span
+         style="color: #ff6347 !important;">AJ</span></a>
+      <button class="navbar-toggler btn1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #FF7400 !important;">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto" >
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./read-more.html" >About Us</a>
+          </li>
+          <!-- first dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Varieties
+            </a>
+            <ul class="dropdown-menu" style="background-color: black; ">
+              <li><a class="dropdown-item" href="../varieties/index.html" >Breakfast</a></li>
+              <li><a class="dropdown-item" href="../varieties/Assets/html/veg-nonveg.html">Veg/Non-Veg</a></li>
+              <li><a class="dropdown-item" href="../varieties/Assets/html/lunch-dinner.html">Lunch/Dinner</a></li>
+              <li><a class="dropdown-item" href="../varieties/Assets/html/seafood.html">Sea-Food</a></li>
+              <li><a class="dropdown-item" href="../varieties/Assets/html/dessert.html">Desserts</a></li>
+              <li><a class="dropdown-item" href="../varieties/Assets/html/drinks.html">Drinks</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Search Something Else</a></li>
+            </ul>
+          </li>
+
+          <!-- second dropdown -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle main" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Season Special
+            </a>
+            <ul class="dropdown-menu" style="background-color: black;">
+              <li><a class="dropdown-item" href="./SummerRecipes.html">Summer</a></li>
+              <li><a class="dropdown-item" href="./SpringRecipes.html">Spring</a></li>
+              <li><a class="dropdown-item" href="./FallRecipes.html">Fall</a></li>
+              <li><a class="dropdown-item" href="./WinterRecipes.html">Winter</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Search Something Else</a></li>
+            </ul>
+          </li>
+        
+
+        </ul>
+
+        <!-- right section div -->
+        <div >
+          <!-- search -->
+          <i class="fa-solid fa-magnifying-glass icon"></i>
+          <!-- likes -->
+          <a href="#"><i class="fa-solid fa-heart icon" ></i></a>
+          <!-- login/signin -->
+
+          <i id="profile" class="fa-solid fa-user icon"></i>
+         <i id="logout" style="color: white;" class="fa-solid fa-right-from-bracket"></i>
+        
+        </div>
+
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="search-container">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search recipes..."
+        autocomplete="off"
+    >
+    <div id="suggestionsDropdown" class="suggestions-dropdown"></div>
+</div>
+
+    
+    <div id="recipes-container" class="recipes-container">
+        <!-- Recipe cards will be injected here dynamically -->
+    </div>
+
+     <!-- footer -->
+
+     <div class="footer">
+        <div>
+             <h1 class="logo-foot">  <span class="logo-span"> <img class="widimg" src="https://github.com/alishaayyyy/AJ-project/blob/main/assets/logo-select.png?raw=true" alt="">A</span> <span class="span-s"> J</h1>
+        <div class="icon-box">
+            <i class="fa-brands fa-instagram font icons"></i>
+            <i class="fa-brands fa-youtube icons utube "></i>
+            <i class="fa-brands fa-facebook-f icons facebook"></i>
+            <i class="fa-brands fa-pinterest-p icons pint"></i>
+        </div>
+        </div>
+        
+        <div class="middle-sec">
+            <ul class="sec-ul font-wf">
+                <li><a class="nav-link " href="../index.html">Home</a></li>
+                <li><a class="nav-link " href="./read-more.html">About</a></li>
+                <li><a class="nav-link " href="../varieties/index.html">Varieties</a></li>
+                <li>Reviews</li>
+                <span id="special"><a class="nav-link " href="./BestRecipes.html">Season special</a></span>
+            </ul>
+        </div>
+      
+        <div class="policy" ><h4>Privacy Policy</h4>
+          
+            <p>"We ensure that your personal information is kept secure and not shared with any third-party.
+              Your data is only used to provide better services on our website."</p>
+       </div>
+        
+       <div class="policy"><h2 class="orng">Thank You</h2>
+              
+        <p class="text-center">"Your support and interest mean the world to us We're dedicated to bringing you the best recipes and culinary experiences from around the world. Stay tuned for more delicious updates!".</p>
+      </div>
+        </div>
+      
+      <div class="copyrigth">
+         <span class="cop-grey">&copy; 2025 AJ. All rights reserved</span>  <h1 class="logo-foot"><span class="logo-span logo-b">A</span>  J</h1>
+      </div> 
+
+    <script>
+
+        // const API_KEY = 'ad210d8303dc46df8c618aeb023e506a'; //KhatriJeiya
+    const API_KEY = 'e66a81dcbd274ba1974c9406d76df8c9'; //atika
+    // const API_KEY = 'ec89a9f243a343caa5f21add5a045576'; //alisha2
+    // const API_KEY = '5564031193454379b491545b1de39e2d'; //alisha
+    // const API_KEY = '7ef1577b26a74418acf49eb98506d43b'; //jeiyakumari
+        
+        // Elements selection
+        const searchInput = document.getElementById('searchInput');
+    const suggestionsDropdown = document.getElementById('suggestionsDropdown');
+
+    // Input debounce function (300ms delay)
+    function debounce(func, timeout = 300) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        };
+    }
+
+    // Autocomplete suggestions fetcher
+    const fetchSuggestions = debounce(async (query) => {
+        try {
+            const response = await fetch(
+                `https://api.spoonacular.com/recipes/autocomplete?number=10&query=${query}&apiKey=${API_KEY}`
+            );
+            const data = await response.json();
+            
+            suggestionsDropdown.innerHTML = data.map(item => `
+                <div class="suggestion-item" data-id="${item.id}">${item.title}</div>
+            `).join('');
+            
+            suggestionsDropdown.style.display = data.length ? 'block' : 'none';
+            
+            // Suggestion click handler
+            document.querySelectorAll('.suggestion-item').forEach(item => {
+                item.addEventListener('click', async () => {
+                    searchInput.value = item.textContent;
+                    await fetchRecipes(item.textContent);
+                    suggestionsDropdown.style.display = 'none';
+                });
+            });
+        } catch (error) {
+            console.error('Suggestions error:', error);
+        }
+    });
+
+    // Input event listener
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim();
+        if (query.length > 2) {
+            fetchSuggestions(query);
+        } else {
+            suggestionsDropdown.style.display = 'none';
+        }
+    });
+
+    // Enter key handler
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const query = searchInput.value.trim();
+            if (query) {
+                fetchRecipes(query);
+                suggestionsDropdown.style.display = 'none';
+            }
+        }
+    });
+
+    // Main recipe fetch function
+    async function fetchRecipes(query = '') {
+        try {
+            let apiUrl;
+            if (query) {
+                // Modified API URL for better matching
+                apiUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=20&cuisine=indian,pakistani&addRecipeInformation=true&instructionsRequired=true&fillIngredients=true&apiKey=${API_KEY}`;
+            } else {
+                apiUrl = `https://api.spoonacular.com/recipes/random?number=15&tags=indian,pakistani&apiKey=${API_KEY}`;
+            }
+
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            let recipes = query ? data.results : data.recipes;
+
+            // Enhanced error handling
+            if (!recipes || recipes.length === 0) {
+                throw new Error("No recipes found");
+            }
+
+            // Fetch details only for search results
+            if(query) {
+                recipes = await Promise.all(
+                    recipes.map(async recipe => {
+                        const res = await fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${API_KEY}`);
+                        return res.json();
+                    })
+                );
+            }
+
+            displayRecipes(recipes);
+        } catch (error) {
+            // Custom error message display
+            const container = document.getElementById('recipes-container');
+            container.innerHTML = `
+                <div class="error-message">
+                    <div class="emoji">😢</div>
+                    <h2>Oops! Recipe Not Found</h2>
+                    <p>We couldn't find any recipes matching your search.</p>
+                    <p>Try different keywords like "Chicken", "Biryani", or "Desserts"</p>
+                </div>
+            `;
+            console.error("Fetch error:", error);
+        }
+    }
+
+    // Display recipes function
+    function displayRecipes(recipes) {
+        const container = document.getElementById('recipes-container');
+        container.innerHTML = '';
+
+        recipes.forEach(recipe => {
+            const card = document.createElement('div');
+            card.classList.add('recipe-card');
+            card.innerHTML = `
+                <img src="${recipe.image}" alt="${recipe.title}">
+                <div class="recipe-card-content">
+                    <h3>${recipe.title}</h3>
+                    <span class="heart-icon" onclick="toggleHeart(event)">&#x2764;</span>
+                    <p>${recipe.summary?.replace(/<[^>]*>?/gm, '').substring(0, 100) || 'Description not available'}...</p>
+                </div>
+            `;
+
+            card.addEventListener('click', () => openRecipeDetails(recipe));
+            container.appendChild(card);
+        });
+    }
+
+    // Heart icon toggle
+    function toggleHeart(event) {
+        event.stopPropagation();
+        event.target.classList.toggle('filled');
+    }
+
+    // Recipe details viewer
+    async function openRecipeDetails(recipe) {
+        try {
+            const response = await fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${API_KEY}`);
+            const fullRecipe = await response.json();
+            
+            const container = document.getElementById('recipes-container');
+            container.innerHTML = `
+                <div class="recipe-details">
+                    <button class="back-button" onclick="fetchRecipes()">&#8592; Back to Recipes</button>
+                    <h2>${fullRecipe.title}</h2>
+                    <img src="${fullRecipe.image}" alt="${fullRecipe.title}">
+                    <div class="content-section">
+                        ${fullRecipe.summary ? `<p class="summary">${fullRecipe.summary.replace(/<[^>]*>?/gm, '')}</p>` : ''}
+                        <div class="ingredients-section">
+                            <h3>Ingredients (${fullRecipe.extendedIngredients.length})</h3>
+                            <ul class="custom-list">
+                                ${fullRecipe.extendedIngredients.map(ing => `<li>${ing.original}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="instructions-section">
+                            <h3>Step-by-Step Instructions</h3>
+                            <div class="instructions">${fullRecipe.instructions || "<p>Instructions coming soon!</p>"}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } catch (error) {
+            console.error("Details error:", error);
+        }
+    }
+
+    // Initial load
+    fetchRecipes();
+
+    </script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+          <script type="module" src="./js/logout.js"></script>
+          <script type="module" src="../js/app.js"></script>
+      
+</body>
+</html>
