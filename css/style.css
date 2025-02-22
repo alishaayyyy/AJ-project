@@ -781,3 +781,57 @@ text-align: center;
 .suggestions div:hover {
     background: #f0f0f0;
 }
+
+/* rating */
+/* Rating Section Styling */
+#rating-section {
+  background-color: #0c0c0cd2; /* Orange */
+  color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#rating-section h3 {
+  margin-bottom: 10px;
+}
+
+#stars {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.star {
+  font-size: 30px;
+  cursor: pointer;
+  color: white; /* Initially stars are white */
+  transition: color 0.2s;
+}
+
+.star:hover {
+  color: #ff641d !important; /* When hovering, the stars will turn orange */
+}
+
+#submit-rating {
+  background-color: #ff641d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#submit-rating:hover {
+  background-color: #ffffff; /* Black when hovering the button */
+  color: #000000;
+}
+
+#rating-message {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: bold;
+}
