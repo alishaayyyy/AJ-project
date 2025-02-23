@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Comment Page</title>
+</head>
+<body>
+  <style>
+  /* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Container for the content */
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Hover effect for container */
+.container:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02); /* Slight zoom effect */
+}
+
+/* Header styles */
+h2 {
+    color: #FF7400;
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+/* Textarea for comment */
+#comment-text {
+    width: 100%;
+    padding: 15px;
+    font-size: 1em;
+    border: 2px solid #FF7400;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    resize: vertical;
+    min-height: 120px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Focus effect on textarea */
+#comment-text:focus {
+    border-color: #FF4C00; /* Darker shade when focused */
+    outline: none; /* Removes the default focus outline */
+}
+
+/* Button for submission */
+#submit-comment {
+    background-color: #FF7400;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover effect */
+#submit-comment:hover {
+    background-color: #e76200; /* Darker shade of orange */
+    transform: translateY(-2px); /* Slight upward movement */
+}
+
+/* Button active effect */
+#submit-comment:active {
+    transform: translateY(2px); /* Button moves down when clicked */
+}
+
+/* Spacing for form elements */
+textarea,
+button {
+    margin-bottom: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    #comment-text {
+        min-height: 100px;
+    }
+
+    #submit-comment {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+}
+
+/* Extra small screen handling */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Add padding for smaller screens */
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    #submit-comment {
+        padding: 8px 16px;
+    }
+}
+
+
+  </style>
+    <div class="container">
+      <a href="../index.html"><div style="text-align:left;"><p style="color: rgb(0, 0, 0);"><i class="fa-solid fa-backward"></i> Back to home</p></div></a>
+        <h2>Leave a Comment</h2>
+        <textarea id="comment-text" placeholder="Your comment"></textarea>
+        <button id="submit-comment">Submit Comment</button>
+    </div>
+    
+    <script type="module" src="../js/comment.js"></script>
+</body>
+</html>

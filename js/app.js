@@ -202,3 +202,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+// comment
+
+
+// Initialize Firebase
+
+
+
+// Comment Section Logic
+const commentButton = document.getElementById('commentButton');
+
+// Check if user is logged in and show comment page
+commentButton.addEventListener('click', function() {
+    const user = auth.currentUser;
+    if (user) {
+        // User is logged in, navigate to comment page
+        window.location.href = "comment.html"; // redirect to comment page
+    } else {
+        alert("Please log in to add a comment.");
+    }
+});
+
+// Sign-in or sign-up logic can be added here
+
+// Firebase Firestore: Save Comment
+const submitCommentButton = document.getElementById('submit-comment');
+const commentText = document.getElementById('comment-text');
+
+document.addEventListener('DOMContentLoaded', function () {
+  const commentButton = document.getElementById('commentButton');
+
+  // Check if the comment button exists
+  if (commentButton) {
+      commentButton.addEventListener('click', function () {
+          const user = auth.currentUser;
+          if (user) {
+              window.location.href = "../HTML/comment.html"; // redirect to comment page
+          } else {
+              alert("Please log in to add a comment.");
+          }
+      });
+  }
+
+  // You can also do the same for other elements
+});

@@ -1,9 +1,16 @@
 body{
   font-family: cursive !important;
   background-color: black !important;
+
+
+
+
+
+
+
+
+
 }
-
-
 /* logo on the left */
 
 .navbar-collapse {
@@ -834,4 +841,30 @@ text-align: center;
   margin-top: 15px;
   font-size: 16px;
   font-weight: bold;
+}
+
+
+/* comment button */
+/* Button for Add Comment */
+#commentButton {
+  background-color: #FF7400; /* Set background color */
+  color: white; /* Set text color to white */
+  padding: 12px 25px; /* Add padding for button */
+  border: none; /* Remove border */
+  border-radius: 10px; /* Round corners */
+  font-size: 1.1em; /* Set font size */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Button hover effect */
+#commentButton:hover {
+  background-color: #e76200; /* Darker shade of orange when hovered */
+  transform: translateY(-2px); /* Slight upward movement */
+}
+
+/* Button active effect */
+#commentButton:active {
+  transform: translateY(2px); /* Button moves down when clicked */
 }

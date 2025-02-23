@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   signOut, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js"; // Update this to the same version
 
-import { getFirestore, collection, setDoc, getDoc, updateDoc, arrayUnion, query, where, getDocs, doc, deleteDoc,addDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js"; // Use the same version for firestore
+import { getFirestore, collection, setDoc, getDoc, updateDoc, arrayUnion, query, where, getDocs, doc, deleteDoc, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js"; // Use the same version for firestore
 
 // Your Firebase configuration (make sure it's correct)
 const firebaseConfig = {
@@ -20,10 +20,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication
-const auth = getAuth(app);  // Pass the initialized app to getAuth
+const auth = getAuth(app);
 
-// Export the Firebase Authentication functions and the auth instance
-export { signInWithEmailAndPassword, auth, createUserWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, getFirestore, setDoc, getDoc, updateDoc, arrayUnion, onAuthStateChanged, collection, query, where, getDocs, doc, deleteDoc,getAuth,initializeApp,firebaseConfig,addDoc };
+// Initialize Firestore
+const firestore = getFirestore(app);  // Initialize Firestore
 
-
-// let user = auth.currentUser;
+// Export the Firebase Authentication functions, Firestore, and the auth instance
+export { signInWithEmailAndPassword, auth, createUserWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, getFirestore, setDoc, getDoc, updateDoc, arrayUnion, onAuthStateChanged, collection, query, where, getDocs, doc, deleteDoc, getAuth, initializeApp, firebaseConfig, addDoc, serverTimestamp, firestore };
