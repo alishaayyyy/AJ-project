@@ -172,6 +172,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  position: relative; /* For proper heart icon positioning */
 }
 
 .recipe-card:hover {
@@ -351,7 +352,7 @@
               <!-- search -->
               <i class="fa-solid fa-magnifying-glass icon" onclick="window.location.href='./search.html'"></i>
               <!-- likes -->
-              <a href="#"><i class="fa-solid fa-heart icon" ></i></a>
+              <a href="./wishlist.html"><i class="fa-solid fa-heart icon" ></i></a>
               <!-- login/signin -->
     
               <i id="profile" class="fa-solid fa-user icon"></i>

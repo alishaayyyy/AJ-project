@@ -49,6 +49,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  position: relative; /* For proper heart icon positioning */
 }
 
 .recipe-card:hover {
@@ -216,7 +217,7 @@
               <li><a class="dropdown-item" href="./FallRecipes.html">Fall</a></li>
               <li><a class="dropdown-item" href="./WinterRecipes.html">Winter</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="./DesiRecipes.html">Search Something Else</a></li>
+              <li><a class="dropdown-item" href="./search.html">Search Something Else</a></li>
             </ul>
           </li>
         
@@ -288,7 +289,19 @@
 </div> 
 
   <script>
-    // const API_KEY = 'ad210d8303dc46df8c618aeb023e506a'; //KhatriJeiya
+// ==== INITIALIZATION ====
+if(!window.localStorage) alert("Local storage disabled!");
+
+let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+wishlist = wishlist.filter(recipe => 
+  recipe?.id && 
+  typeof recipe.id === 'number' &&
+  recipe.title &&
+  recipe.image
+);
+localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+   // const API_KEY = 'ad210d8303dc46df8c618aeb023e506a'; //KhatriJeiya
     // const API_KEY = 'e66a81dcbd274ba1974c9406d76df8c9'; //atika
     // const API_KEY = 'ec89a9f243a343caa5f21add5a045576'; //alisha2
     const API_KEY = '5564031193454379b491545b1de39e2d'; //alisha
@@ -296,76 +309,117 @@
     const API_URL = `https://api.spoonacular.com/recipes/random?number=30&tags=fries&apiKey=${API_KEY}`;
 
 
-    // Fetch and display recipes
-    async function fetchRecipes() {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        displayRecipes(data.recipes);
-      } catch (error) {
-        console.error('Error fetching recipes:', error);
-      }
-    }
+// ==== FUNCTIONS ====
+async function fetchRecipes() {
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error('API Limit Exceeded');
+    const data = await response.json();
+    
+    const validRecipes = (data.recipes || []).filter(recipe => 
+      recipe?.id && 
+      recipe.title &&
+      recipe.image
+    );
 
-    // Display recipe cards
-    function displayRecipes(recipes) {
-      const container = document.getElementById('recipes-container');
-      container.innerHTML = '';
+    if (!validRecipes.length) throw new Error('No valid recipes found');
+    
+    displayRecipes(validRecipes);
+  } catch (error) {
+    document.getElementById('recipes-container').innerHTML = 
+      `<h2>Error: ${error.message}</h2>`;
+  }
+}
 
-      recipes.forEach(recipe => {
-        const card = document.createElement('div');
-        card.classList.add('recipe-card');
-        card.innerHTML = `
-          <img src="${recipe.image}" alt="${recipe.title}">
-          <div class="recipe-card-content">
-            <h3>${recipe.title}</h3>
-            <span class="heart-icon" onclick="toggleHeart(event)">&#x2764;</span>
-            <p>${recipe.summary.substring(0, 100)}...</p>
-          </div>
-        `;
+function toggleWishlist(recipe, event) {
+  event.stopPropagation(); // Prevent card click
+  if (!recipe?.id) return;
+  
+  const index = wishlist.findIndex(item => item.id === recipe.id);
+  const wishItem = {
+    id: recipe.id,
+    title: recipe.title,
+    image: recipe.image,
+    summary: recipe.summary,
+    instructions: recipe.instructions,
+    extendedIngredients: recipe.extendedIngredients || []
+  };
 
-        card.addEventListener('click', () => openRecipeDetails(recipe));
-        container.appendChild(card);
-      });
-    }
+  if (index === -1) {
+    wishlist.push(wishItem);
+    event.target.classList.add('filled');
+  } else {
+    wishlist.splice(index, 1);
+    event.target.classList.remove('filled');
+  }
+  
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
 
-    // Toggle heart icon
-    function toggleHeart(event) {
-      event.stopPropagation();
-      const heart = event.target;
-      heart.classList.toggle('filled');
-    }
-
-    // Display recipe details in a styled format
-    function openRecipeDetails(recipe) {
-      const container = document.getElementById('recipes-container');
-      container.innerHTML = `
-    <div class="recipe-details">
-      <button class="back-button" onclick="fetchRecipes()">&#8592; Back</button>
-      <h2>${recipe.title}</h2>
+function displayRecipes(recipes) {
+  const container = document.getElementById('recipes-container');
+  container.innerHTML = '';
+  
+  recipes.forEach(recipe => {
+    if (!recipe?.id) return;
+    
+    const isFavorite = wishlist.some(item => item.id === recipe.id);
+    const card = document.createElement('div');
+    card.className = 'recipe-card';
+    card.innerHTML = `
       <img src="${recipe.image}" alt="${recipe.title}">
-      <div class="content-section">
-        <p class="summary">${recipe.summary}</p>
-        <div class="ingredients-section">
-          <h3>Ingredients</h3>
-          <ul class="custom-list">
-            ${recipe.extendedIngredients.map(ing => `<li>${ing.original}</li>`).join('')}
-          </ul>
-        </div>
-        <div class="instructions-section">
-          <h3>Instructions</h3>
-          <div class="instructions">${recipe.instructions || "<p>Instructions not available.</p>"}</div>
+      <div class="recipe-card-content">
+        <h3>${recipe.title}</h3>
+        <span class="heart-icon ${isFavorite ? 'filled' : ''}" 
+              onclick="toggleWishlist(${JSON.stringify(recipe).replace(/"/g, '&quot;')}, event)">❤</span>
+        <p>${(recipe.summary || '').substring(0, 100)}...</p>
+      </div>
+    `;
+
+    // Click handler for card (excluding heart)
+    card.addEventListener('click', (e) => {
+      if (!e.target.closest('.heart-icon')) {
+        openRecipeDetails(recipe);
+      }
+    });
+    
+    container.appendChild(card);
+  });
+}
+
+  
+  function openRecipeDetails(recipe) {
+    const container = document.getElementById('recipes-container');
+    const ingredients = recipe.extendedIngredients?.map(ing => `<li>${ing.original}</li>`)?.join('') || '<li>Ingredients not available</li>';
+    
+    container.innerHTML = `
+      <div class="recipe-details">
+        <button class="back-button" onclick="fetchRecipes()">← Back</button>
+        <h2>${recipe.title}</h2>
+        <img src="${recipe.image}" alt="${recipe.title}">
+        <div class="content-section">
+          <p class="summary">${recipe.summary || ''}</p>
+          <div class="ingredients-section">
+            <h3>Ingredients</h3>
+            <ul class="custom-list">${ingredients}</ul>
+          </div>
+          <div class="instructions-section">
+            <h3>Instructions</h3>
+            <div class="instructions">${recipe.instructions || "<p>Instructions not available.</p>"}</div>
+          </div>
         </div>
       </div>
-    </div>
-  `;
-    }
-
-    // Fetch recipes on page load
-    fetchRecipes();
+    `;
+  }
+  
+  // ==== INITIAL LOAD ====
+  document.querySelector('.fa-heart').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = './wishlist.html';
+  });
+  
+  fetchRecipes();
   </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-      <script type="module" src="../AJ-project/js/logout.js"></script>
-      <script type="module" src="../AJ-project/js/app.js"></script>
 </body>
 </html>
