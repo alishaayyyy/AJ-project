@@ -117,6 +117,10 @@ a:hover .icon {
 
 }
 
+.favorite-btn.active i {
+  color: #ff6347; /* Heart icon ka color change */
+}
+
 
 /* Dropdown menu styling */
 .dropdown-menu {
