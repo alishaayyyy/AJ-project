@@ -303,36 +303,46 @@ wishlist = wishlist.filter(recipe =>
 );
 localStorage.setItem('wishlist', JSON.stringify(wishlist));
 
-    const API_KEY = 'ad210d8303dc46df8c618aeb023e506a'; //KhatriJeiya
-    // const API_KEY = 'e66a81dcbd274ba1974c9406d76df8c9'; //atika
-    // const API_KEY = 'ec89a9f243a343caa5f21add5a045576'; //alisha2
-    // const API_KEY = '5564031193454379b491545b1de39e2d'; //alisha
-    // const API_KEY = '7ef1577b26a74418acf49eb98506d43b'; //JeiyaKumari
-    // const API_URL = `https://api.spoonacular.com/recipes/random?number=100&apiKey=${API_KEY}`;
-    const API_URL = `https://api.spoonacular.com/recipes/random?number=20&tags=dinner&apiKey=${API_KEY}`;
+const API_KEYS = [
+  "ad210d8303dc46df8c618aeb023e506a", // KhatriJeiya
+  "e66a81dcbd274ba1974c9406d76df8c9", // atika
+  "ec89a9f243a343caa5f21add5a045576", // alisha2
+  "5564031193454379b491545b1de39e2d", // alisha
+];
 
-
-
+let currentIndex = 0; // Pehli API key use hogi
 
 // ==== FUNCTIONS ====
 async function fetchRecipes() {
+  if (currentIndex >= API_KEYS.length) {
+    document.getElementById("recipes-container").innerHTML =
+      "<h2>Error: All API keys have exceeded their limit!</h2>";
+    return;
+  }
+
+  const API_KEY = API_KEYS[currentIndex];
+  const API_URL = `https://api.spoonacular.com/recipes/random?number=20&tags=meat&apiKey=${API_KEY}`;
+
   try {
     const response = await fetch(API_URL);
-    if (!response.ok) throw new Error('API Limit Exceeded');
+    if (!response.ok) {
+      console.warn(`API Key ${API_KEY} failed. Switching to next...`);
+      currentIndex++; // Next API key use karo
+      return fetchRecipes(); // Phir se try karo
+    }
+
     const data = await response.json();
-    
-    const validRecipes = (data.recipes || []).filter(recipe => 
-      recipe?.id && 
-      recipe.title &&
-      recipe.image
+    const validRecipes = (data.recipes || []).filter(
+      (recipe) => recipe?.id && recipe.title && recipe.image
     );
 
-    if (!validRecipes.length) throw new Error('No valid recipes found');
-    
+    if (!validRecipes.length) throw new Error("No valid recipes found");
+
     displayRecipes(validRecipes);
   } catch (error) {
-    document.getElementById('recipes-container').innerHTML = 
-      `<h2>Error: ${error.message}</h2>`;
+    document.getElementById(
+      "recipes-container"
+    ).innerHTML = `<h2>Error: ${error.message}</h2>`;
   }
 }
 
