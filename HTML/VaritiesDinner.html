@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Macaroni Recipes🍵</title>
+  <title>Variaties / Dinner 🍵</title>
   <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="../css/style.css">
 
@@ -34,6 +34,112 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
+
+
+/* slider */
+
+
+.slidemain{
+    height: 100px !important;
+}
+
+.slider-img{
+    width: 100%;
+    height: 478px !important;
+    border-radius: 0px 0px 18px 18px;
+}
+
+.textc{
+    text-align: center;
+    font-family: "Cute Font", serif;
+    font-size: 5em;
+    color: #f5f2f1;
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin-bottom: 2em;
+}
+
+.recipe-img-full{
+    background-image: url(https://img.sndimg.com/food/image/upload/q_92,fl_progressive,w_1200,c_scale/v1/img/recipes/23/22/5/bDrqWavHSnG7MshUgTCT_oatmealwaffles3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    border-radius: 0px 0px 15px 15px;
+
+}
+
+.disflex{
+    display: flex !important;
+
+}
+
+.row-imagess{
+  gap: 2em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+
+.row-imagess a{
+text-decoration: none;
+color: #ccc;
+font-weight: bold;
+font-size: 1.5em;
+ line-height: 3.4em;
+
+}
+
+
+.img-row{
+height: 150px;
+width: 150px;
+border-radius: 50%;
+margin-top: 3em;
+border: 2px solid white;
+transition: all 0.5s ease-in-out;
+filter: grayscale(1);
+
+
+}
+
+.img-row:hover{
+transform: scale(1.2);
+border: 2px solid rgb(96, 96, 96);
+filter: none;
+box-shadow: rgba(255, 255, 255, 0.6) 0px 3px 8px 2px, rgba(255, 255, 255, 0.696) 0px 2px 5px 2px;
+}
+
+@media (max-width:500px){
+    .recipe-img-full{
+        height: 200px;
+    }
+
+/* imeggessssssssssss M@ */
+.row-imagess{
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+
+.row-imagess a{
+  font-size: 0.6em;
+}
+
+
+.img-row{
+height: 100px;
+width: 100px;
+border-radius: 50%;
+margin-top: 3em;
+
+}
+
+  }
+
 
 .recipes-container {
   display: grid;
@@ -245,7 +351,88 @@
       </div>
     </div>
   </nav>
-  <h1 class="main-heading" style="padding-bottom: 1em; text-align: center; ">Macaroni Recipes:</h1>
+
+<!-- slider -->
+
+
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators ">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner slidermain ">
+      <div class="carousel-item active">
+        <img src="https://media.istockphoto.com/id/1265653445/photo/indian-traditional-food-mung-dal-tadka-curry-served-in-ceramic-bowl.jpg?s=612x612&w=0&k=20&c=ez5OCmn0sIAOA94b5yJ1nZC_5DYcT_KGJFzBcr1J-WM=" class="d-block slider-img" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1 class="textc"> varieties </h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://t4.ftcdn.net/jpg/06/09/35/79/360_F_609357995_9f5MTF73kiu6UYAtpJZRT9BFWet4l3fX.jpg" class="d-block  slider-img" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1 class="textc"> varieties </h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN4VKOPHC1Ntf7SqTs4h5vL_gVZfl0Q-Zi1_ZC53ipth9FcfkVJdjPsVk6vSKr1qfhwxU&usqp=CAU" class="d-block slider-img" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1 class="textc"> varieties </h1>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+  
+
+  <!-- imgess----------rowwwwwwwwwwwwwwwwwww -->
+
+  <div class="row-imagess">
+
+
+    <br>
+    <br>
+
+
+    <a href="./BreakfastRecipes.html">
+      <img class="img-row" src="https://images.immediate.co.uk/production/volatile/sites/30/2017/08/smoothie-bowl-3a8632c.jpg?quality=90&resize=556,505" alt="">
+      <p class="text-center">Breakfast</p>
+    </a>
+
+    <a href="./Lunch.html" >
+      <img class="img-row" src="https://i.pinimg.com/736x/b2/f3/69/b2f369286e98dcecedab6988d2a5bda3.jpg" alt="">
+      <p class="text-center">Lunch</p>
+    </a>
+
+    <a href="./VaritiesDinner.html" >
+      <img class="img-row" src="https://i.pinimg.com/736x/db/dd/bc/dbddbc48dc560d6904ecb73f1c24e7ae.jpg" alt="">
+      <p class="text-center">Dinner</p>
+    </a>
+    <a href="./VaritiesDessert.html" >
+      <img class="img-row" src="https://i.pinimg.com/736x/9a/36/fe/9a36fec0b2a1ea95644bf2bdc0c9bc24.jpg" alt="">
+      <p class="text-center">Dessert</p>
+    </a>
+    <a href="./Drinks.html" >
+      <img class="img-row" src="https://i.pinimg.com/736x/05/62/28/056228c1d8549301bdd3ec21d629509e.jpg" alt="">
+      <p class="text-center">Drinks</p>
+    </a>
+    <a href="./Seafood.html" >
+      <img class="img-row" src="https://i.pinimg.com/736x/84/c2/79/84c27983a17f2fe1d8cdcffe714a3c3c.jpg" alt="">
+      <p class="text-center">Seafood</p>
+    </a>
+  
+
+  </div>
+
+  <h1 class="main-heading" style="padding-bottom: 1em; text-align: center; ">Dinner Recipes</h1>
 
   <div id="recipes-container" class="recipes-container">
     <!-- Recipe cards will be injected here dynamically -->
@@ -305,10 +492,10 @@ localStorage.setItem('wishlist', JSON.stringify(wishlist));
 
    // const API_KEY = 'ad210d8303dc46df8c618aeb023e506a'; //KhatriJeiya
     // const API_KEY = 'e66a81dcbd274ba1974c9406d76df8c9'; //atika
-    // const API_KEY = 'ec89a9f243a343caa5f21add5a045576'; //alisha2
-    const API_KEY = '5564031193454379b491545b1de39e2d'; //alisha
+    const API_KEY = 'ec89a9f243a343caa5f21add5a045576'; //alisha2
+    // const API_KEY = '5564031193454379b491545b1de39e2d'; //alisha
     // const API_KEY = '7ef1577b26a74418acf49eb98506d43b'; //JeiyaKumari
-    const API_URL = `https://api.spoonacular.com/recipes/random?number=10&tags=macaroni&apiKey=${API_KEY}`;
+    const API_URL = `https://api.spoonacular.com/recipes/random?number=30&tags=dinner&apiKey=${API_KEY}`;
 
 
 // ==== FUNCTIONS ====
