@@ -34,6 +34,12 @@
     
   </head>
   <body>
+    <style>
+      #add:hover {
+        transform: scale(1.2); /* Scale up the icon */
+        color: #FF7400 !important; /* Change color to orange */
+      }
+    </style>
    <!-- NAV BAR -->
    <nav class="navbar navbar-expand-lg " style="background-color: black; padding: 0.3em !important;">
     <div class="container-fluid" >
@@ -98,7 +104,8 @@
         <!-- login/signin -->
 
         <i id="profile"  class="fa-solid fa-user icon"></i>
-        <i style="color: white; font-size:1.2em;" class="fa-solid fa-plus" id="add"></i>
+        <i style="color: white; font-size: 1.5em; transition: transform 0.3s, color 0.3s;" class="fa-solid fa-plus" id="add"></i>
+
         <i id="logout" style="color: white; font-size:1.2m; margin-left: 4px;" class="fa-solid fa-right-from-bracket icon"></i>
 
 
