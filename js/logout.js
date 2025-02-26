@@ -1,26 +1,25 @@
-import { signOut, auth } from "./auth.js"; // Import Firebase's signOut and getAuth
+import { signOut, auth } from "./auth.js"; 
 
-//const auth = getAuth(); // Initialize Firebase auth instance
-let logout = document.getElementById('logout'); // Get the logout button
+let logout = document.getElementById('logout');
 
 logout.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent default form behavior
+    e.preventDefault(); 
 
-    const user = auth.currentUser; // Get the current user at the time of the click
+    const user = auth.currentUser; 
 
     if (user) {
-        // User is logged in, proceed to log out
+      
         signOut(auth).then(() => {
             alert("Logged out successfully!");
            // window.location.href = "../index.html"; // Ensure the path to index.html is correct
         })
         .catch((error) => {
-            // Handle sign-out errors
+        
             console.error("Error during logout:", error.message);
             alert("An error occurred while logging out.");
         });
     } else {
-        // If no user is logged in
+  
         alert("You are already signed out.");
     }
 })    

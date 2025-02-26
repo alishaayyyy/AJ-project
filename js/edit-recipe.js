@@ -14,14 +14,14 @@ onAuthStateChanged(auth, (user) => {
     if (recipeId) {
       fetchRecipeData(recipeId);
     } else {
-      window.location.href = 'profile.html'; // Redirect if no recipe ID
+      window.location.href = 'profile.html';
     }
   } else {
-    window.location.href = 'login.html'; // Redirect to login page if not logged in
+    window.location.href = 'login.html'; //
   }
 });
 
-// Fetch the recipe data to display in the form
+// Fetch the recipe 
 async function fetchRecipeData(recipeId) {
   const recipeRef = doc(db, "recipes", recipeId);
   const docSnap = await getDoc(recipeRef);
@@ -34,11 +34,10 @@ async function fetchRecipeData(recipeId) {
     document.getElementById("recipe-ingredients").value = recipeData.ingredients;
     document.getElementById("recipe-instructions").value = recipeData.instructions;
   } else {
-    window.location.href = 'profile.html'; // Redirect if recipe doesn't exist
+    window.location.href = 'profile.html'; 
   }
 }
 
-// Handle form submission to save edited recipe
 document.getElementById("edit-recipe-form").addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -56,7 +55,7 @@ document.getElementById("edit-recipe-form").addEventListener("submit", async (ev
     const recipeRef = doc(db, "recipes", recipeId);
     await updateDoc(recipeRef, updatedRecipe);
     alert("Recipe updated successfully!");
-    window.location.href = 'profile.html'; // Redirect back to profile
+    window.location.href = 'profile.html';
   }
 });
 
