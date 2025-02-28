@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const user = auth.currentUser;
           if (user) {
             // working here
-              window.location.href = "../HTML/comment.html"; //comment page
+              window.location.href = "./HTML/comment.html"; //comment page
           } else {
               alert("Please log in to add a comment.");
           }
