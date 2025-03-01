@@ -20,7 +20,7 @@ onAuthStateChanged(auth, (user) => {
 
 
 function displayUserInfo(user) {
-  document.getElementById('user-name').textContent = user.displayName || "User Name";
+  document.getElementById('user-name').textContent = user.displayName || "Your Profile";
   document.getElementById('user-email').textContent = user.email;
 
 

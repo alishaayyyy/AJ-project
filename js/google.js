@@ -33,6 +33,7 @@ google.addEventListener('click', (e) => {
   
       updateUserProfile(user);
       alert("Successfully signed in!");
+      window.location.href = "../HTML/profile.html";
       //window.location.href = "../HTML/dashboard.html"; // Redirect to the dashboard
     })
     .catch((error) => {
